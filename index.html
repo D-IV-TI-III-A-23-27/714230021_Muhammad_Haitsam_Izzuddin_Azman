@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ilustrasi interaktif arsitektur Gradient Boosting - Algoritma Machine Learning ensemble yang membangun model secara sekuensial untuk meminimalkan error.">
+    <meta name="theme-color" content="#0a0a1a">
+    <title>Ilustrasi Arsitektur Gradient Boosting | Kecerdasan Buatan</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <span class="loader-text">Memuat Ilustrasi...</span>
+        </div>
+    </div>
+
+    <!-- Animated Background Particles -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Kecerdasan Buatan
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">Gradient</span>
+                <span class="gradient-text-alt">Boosting</span>
+            </h1>
+            <p class="hero-subtitle">Algoritma Ensemble Learning yang membangun model prediktif secara sekuensial, di mana setiap model baru memperbaiki kesalahan model sebelumnya.</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="1999">0</span>
+                    <span class="stat-label">Tahun Ditemukan</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Jerome H.</span>
+                    <span class="stat-label">Friedman</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Ensemble</span>
+                    <span class="stat-label">Jenis Metode</span>
+                </div>
+            </div>
+            <a href="#overview" class="scroll-indicator">
+                <span>Jelajahi</span>
+                <div class="scroll-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="section" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">01 — Pengenalan</span>
+                <h2 class="section-title">Apa itu Gradient Boosting?</h2>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card glass-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="url(#g1)" stroke-width="2"/><path d="M16 24l6 6 10-12" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g1" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+                    </div>
+                    <h3>Ensemble Method</h3>
+                    <p>Menggabungkan banyak model lemah (weak learner) menjadi satu model kuat (strong learner) dengan cara aditif dan sekuensial.</p>
+                </div>
+                <div class="overview-card glass-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="6" width="36" height="36" rx="8" stroke="url(#g2)" stroke-width="2"/><path d="M14 30l6-8 5 5 9-13" stroke="url(#g2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g2" x1="6" y1="6" x2="42" y2="42"><stop stop-color="#ec4899"/><stop offset="1" stop-color="#f43f5e"/></linearGradient></defs></svg>
+                    </div>
+                    <h3>Gradient Descent</h3>
+                    <p>Menggunakan teknik gradient descent pada ruang fungsi untuk meminimalkan loss function secara iteratif di setiap tahap.</p>
+                </div>
+                <div class="overview-card glass-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l8 16h16l-13 9 5 17-16-12-16 12 5-17L0 20h16z" stroke="url(#g3)" stroke-width="2" stroke-linejoin="round"/><defs><linearGradient id="g3" x1="0" y1="4" x2="48" y2="46"><stop stop-color="#14b8a6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs></svg>
+                    </div>
+                    <h3>Decision Trees</h3>
+                    <p>Umumnya menggunakan decision tree sebagai base learner, yang dikenal sebagai Gradient Boosted Decision Trees (GBDT).</p>
+                </div>
+                <div class="overview-card glass-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="url(#g4)" stroke-width="2"/><circle cx="24" cy="24" r="10" stroke="url(#g4)" stroke-width="2"/><circle cx="24" cy="24" r="3" fill="url(#g4)"/><defs><linearGradient id="g4" x1="6" y1="6" x2="42" y2="42"><stop stop-color="#f59e0b"/><stop offset="1" stop-color="#ef4444"/></linearGradient></defs></svg>
+                    </div>
+                    <h3>Minimasi Error</h3>
+                    <p>Setiap iterasi fokus pada residual (sisa error) dari prediksi sebelumnya, secara bertahap mengurangi total kesalahan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Diagram Section -->
+    <section class="section section-dark" id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">02 — Arsitektur</span>
+                <h2 class="section-title">Diagram Arsitektur Gradient Boosting</h2>
+                <p class="section-desc">Klik pada setiap komponen untuk melihat penjelasan detail</p>
+            </div>
+            <div class="architecture-wrapper">
+                <canvas id="archCanvas"></canvas>
+                <div class="arch-overlay" id="archOverlay">
+                    <!-- Dynamically positioned interactive nodes -->
+                </div>
+            </div>
+            <!-- Detail Panel -->
+            <div class="detail-panel glass-card" id="detailPanel">
+                <button class="detail-close" id="detailClose">&times;</button>
+                <h3 id="detailTitle">Pilih komponen</h3>
+                <p id="detailDesc">Klik pada salah satu node di diagram arsitektur di atas untuk melihat penjelasan detail dari setiap komponen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step by Step Section -->
+    <section class="section" id="steps">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">03 — Proses</span>
+                <h2 class="section-title">Langkah Kerja Gradient Boosting</h2>
+            </div>
+            <div class="steps-timeline">
+                <div class="timeline-line"></div>
+                <div class="step-item" data-step="1">
+                    <div class="step-marker"><span>1</span></div>
+                    <div class="step-content glass-card">
+                        <h3>Inisialisasi Model Awal</h3>
+                        <p>Model dimulai dengan prediksi konstan, biasanya rata-rata dari target variable. Ini menjadi base prediction <code>F₀(x)</code>.</p>
+                        <div class="formula-box">
+                            <code>F₀(x) = argmin<sub>γ</sub> Σ L(yᵢ, γ)</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item" data-step="2">
+                    <div class="step-marker"><span>2</span></div>
+                    <div class="step-content glass-card">
+                        <h3>Hitung Pseudo-Residuals</h3>
+                        <p>Hitung gradient negatif dari loss function terhadap prediksi saat ini. Residuals ini menunjukkan arah perbaikan yang diperlukan.</p>
+                        <div class="formula-box">
+                            <code>rᵢₘ = -[∂L(yᵢ, F(xᵢ))/∂F(xᵢ)]<sub>F=Fₘ₋₁</sub></code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item" data-step="3">
+                    <div class="step-marker"><span>3</span></div>
+                    <div class="step-content glass-card">
+                        <h3>Fit Weak Learner (Tree)</h3>
+                        <p>Latih decision tree baru pada pseudo-residuals. Tree ini belajar memprediksi koreksi yang diperlukan untuk memperbaiki prediksi saat ini.</p>
+                        <div class="formula-box">
+                            <code>hₘ(x) = DecisionTree(X, rₘ)</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item" data-step="4">
+                    <div class="step-marker"><span>4</span></div>
+                    <div class="step-content glass-card">
+                        <h3>Tentukan Optimal Step Size</h3>
+                        <p>Cari learning rate γ yang optimal untuk setiap region di leaf node, meminimalkan total loss function.</p>
+                        <div class="formula-box">
+                            <code>γₘ = argmin<sub>γ</sub> Σ L(yᵢ, Fₘ₋₁(xᵢ) + γ·hₘ(xᵢ))</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item" data-step="5">
+                    <div class="step-marker"><span>5</span></div>
+                    <div class="step-content glass-card">
+                        <h3>Update Model</h3>
+                        <p>Tambahkan weak learner yang telah di-scale dengan learning rate ke model ensemble. Proses ini diulang selama M iterasi.</p>
+                        <div class="formula-box">
+                            <code>Fₘ(x) = Fₘ₋₁(x) + ν · γₘ · hₘ(x)</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item" data-step="6">
+                    <div class="step-marker"><span>6</span></div>
+                    <div class="step-content glass-card">
+                        <h3>Output Prediksi Final</h3>
+                        <p>Model akhir adalah jumlah dari semua weak learners. Prediksi dibuat dengan menjumlahkan kontribusi setiap tree.</p>
+                        <div class="formula-box">
+                            <code>F(x) = F₀(x) + Σₘ₌₁ᴹ ν · γₘ · hₘ(x)</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulation -->
+    <section class="section section-dark" id="simulation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">04 — Simulasi</span>
+                <h2 class="section-title">Simulasi Interaktif</h2>
+                <p class="section-desc">Lihat bagaimana Gradient Boosting secara bertahap meningkatkan akurasi prediksi</p>
+            </div>
+            <div class="simulation-wrapper">
+                <div class="sim-controls">
+                    <div class="sim-control-group">
+                        <label>Jumlah Trees (Iterasi)</label>
+                        <input type="range" id="numTrees" min="1" max="20" value="1" class="sim-slider">
+                        <span class="sim-value" id="numTreesVal">1</span>
+                    </div>
+                    <div class="sim-control-group">
+                        <label>Learning Rate (ν)</label>
+                        <input type="range" id="learningRate" min="1" max="10" value="3" class="sim-slider">
+                        <span class="sim-value" id="learningRateVal">0.3</span>
+                    </div>
+                    <div class="sim-control-group">
+                        <label>Tree Depth</label>
+                        <input type="range" id="treeDepth" min="1" max="5" value="2" class="sim-slider">
+                        <span class="sim-value" id="treeDepthVal">2</span>
+                    </div>
+                    <button class="sim-btn" id="resetBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Reset Data
+                    </button>
+                </div>
+                <div class="sim-charts">
+                    <div class="sim-chart-container glass-card">
+                        <h4>Data & Prediksi Model</h4>
+                        <canvas id="predictionChart"></canvas>
+                    </div>
+                    <div class="sim-chart-container glass-card">
+                        <h4>Loss per Iterasi</h4>
+                        <canvas id="lossChart"></canvas>
+                    </div>
+                </div>
+                <div class="sim-metrics">
+                    <div class="metric-card glass-card">
+                        <span class="metric-label">MSE (Mean Squared Error)</span>
+                        <span class="metric-value" id="mseValue">—</span>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <span class="metric-label">R² Score</span>
+                        <span class="metric-value" id="r2Value">—</span>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <span class="metric-label">Trees Digunakan</span>
+                        <span class="metric-value" id="treesUsed">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section" id="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">05 — Perbandingan</span>
+                <h2 class="section-title">Gradient Boosting vs Metode Lain</h2>
+            </div>
+            <div class="comparison-table-wrapper glass-card">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th class="highlight-col">Gradient Boosting</th>
+                            <th>Random Forest</th>
+                            <th>AdaBoost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Metode Ensemble</td>
+                            <td class="highlight-col">Boosting (Sekuensial)</td>
+                            <td>Bagging (Paralel)</td>
+                            <td>Boosting (Sekuensial)</td>
+                        </tr>
+                        <tr>
+                            <td>Cara Belajar</td>
+                            <td class="highlight-col">Meminimalkan gradient loss</td>
+                            <td>Rata-rata prediksi</td>
+                            <td>Reweight data points</td>
+                        </tr>
+                        <tr>
+                            <td>Akurasi</td>
+                            <td class="highlight-col">
+                                <div class="accuracy-bar"><div class="accuracy-fill" style="width:95%"></div></div>
+                                Sangat Tinggi
+                            </td>
+                            <td>
+                                <div class="accuracy-bar"><div class="accuracy-fill rf" style="width:88%"></div></div>
+                                Tinggi
+                            </td>
+                            <td>
+                                <div class="accuracy-bar"><div class="accuracy-fill ada" style="width:82%"></div></div>
+                                Cukup Tinggi
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Risiko Overfitting</td>
+                            <td class="highlight-col">Sedang (perlu tuning)</td>
+                            <td>Rendah</td>
+                            <td>Tinggi</td>
+                        </tr>
+                        <tr>
+                            <td>Kecepatan Training</td>
+                            <td class="highlight-col">Lambat (sekuensial)</td>
+                            <td>Cepat (paralel)</td>
+                            <td>Sedang</td>
+                        </tr>
+                        <tr>
+                            <td>Interpretabilitas</td>
+                            <td class="highlight-col">Sedang</td>
+                            <td>Rendah</td>
+                            <td>Tinggi</td>
+                        </tr>
+                        <tr>
+                            <td>Implementasi Populer</td>
+                            <td class="highlight-col">XGBoost, LightGBM, CatBoost</td>
+                            <td>Scikit-learn</td>
+                            <td>Scikit-learn</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variants Section -->
+    <section class="section section-dark" id="variants">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">06 — Varian</span>
+                <h2 class="section-title">Varian Populer Gradient Boosting</h2>
+            </div>
+            <div class="variants-grid">
+                <div class="variant-card glass-card" data-variant="xgboost">
+                    <div class="variant-logo">
+                        <span class="variant-icon">⚡</span>
+                    </div>
+                    <h3>XGBoost</h3>
+                    <p>eXtreme Gradient Boosting — Implementasi yang sangat teroptimasi dengan regularisasi L1 & L2, parallel computing, dan penanganan missing values otomatis.</p>
+                    <ul class="variant-features">
+                        <li>Regularisasi bawaan</li>
+                        <li>Parallel tree construction</li>
+                        <li>Cross-validation bawaan</li>
+                    </ul>
+                </div>
+                <div class="variant-card glass-card" data-variant="lightgbm">
+                    <div class="variant-logo">
+                        <span class="variant-icon">🍃</span>
+                    </div>
+                    <h3>LightGBM</h3>
+                    <p>Light Gradient Boosting Machine oleh Microsoft — Menggunakan teknik Gradient-based One-Side Sampling (GOSS) dan Exclusive Feature Bundling (EFB).</p>
+                    <ul class="variant-features">
+                        <li>Leaf-wise tree growth</li>
+                        <li>Sangat cepat dan efisien memori</li>
+                        <li>Mendukung categorical features</li>
+                    </ul>
+                </div>
+                <div class="variant-card glass-card" data-variant="catboost">
+                    <div class="variant-logo">
+                        <span class="variant-icon">🐱</span>
+                    </div>
+                    <h3>CatBoost</h3>
+                    <p>Categorical Boosting oleh Yandex — Dirancang khusus untuk menangani fitur kategoris tanpa perlu encoding manual.</p>
+                    <ul class="variant-features">
+                        <li>Ordered boosting</li>
+                        <li>Penanganan kategori otomatis</li>
+                        <li>Minim overfitting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="section" id="usecases">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">07 — Penggunaan</span>
+                <h2 class="section-title">Kasus Penggunaan</h2>
+            </div>
+            <div class="usecases-grid">
+                <div class="usecase-card glass-card">
+                    <div class="usecase-icon">🏦</div>
+                    <h3>Credit Scoring</h3>
+                    <p>Menilai risiko kredit nasabah berdasarkan data historis transaksi dan profil keuangan.</p>
+                </div>
+                <div class="usecase-card glass-card">
+                    <div class="usecase-icon">🏥</div>
+                    <h3>Diagnosis Medis</h3>
+                    <p>Membantu prediksi penyakit berdasarkan gejala dan data pasien dengan akurasi tinggi.</p>
+                </div>
+                <div class="usecase-card glass-card">
+                    <div class="usecase-icon">🛒</div>
+                    <h3>E-Commerce</h3>
+                    <p>Sistem rekomendasi produk dan prediksi churn pelanggan untuk meningkatkan retensi.</p>
+                </div>
+                <div class="usecase-card glass-card">
+                    <div class="usecase-icon">🔍</div>
+                    <h3>Fraud Detection</h3>
+                    <p>Mendeteksi transaksi penipuan secara real-time dengan tingkat false positive rendah.</p>
+                </div>
+                <div class="usecase-card glass-card">
+                    <div class="usecase-icon">🏠</div>
+                    <h3>Prediksi Harga Properti</h3>
+                    <p>Estimasi harga rumah berdasarkan lokasi, ukuran, fasilitas, dan tren pasar.</p>
+                </div>
+                <div class="usecase-card glass-card">
+                    <div class="usecase-icon">📊</div>
+                    <h3>Kaggle Competitions</h3>
+                    <p>Algoritma favorit pemenang kompetisi data science berkat fleksibilitas dan akurasinya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3><span class="gradient-text">Gradient</span> <span class="gradient-text-alt">Boosting</span></h3>
+                    <p>Ilustrasi Arsitektur AI — Tugas Kecerdasan Buatan</p>
+                </div>
+                <div class="footer-info">
+                    <p><strong>NIM:</strong> 714230021</p>
+                    <p><strong>Nama:</strong> Muhammad Haitsam Izzuddin Azman</p>
+                    <p><strong>Mata Kuliah:</strong> Kecerdasan Buatan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 — Dibuat dengan ❤️ untuk tugas Kecerdasan Buatan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
