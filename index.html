@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ilustrasi interaktif arsitektur Gradient Boosting - Algoritma Machine Learning ensemble yang membangun model secara sekuensial untuk meminimalkan error.">
-    <meta name="theme-color" content="#0a0a1a">
+    <meta name="theme-color" content="#f8fafc">
     <title>Ilustrasi Arsitektur Gradient Boosting | Kecerdasan Buatan</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +27,10 @@
     <!-- Hero Section -->
     <header class="hero" id="hero">
         <div class="hero-content">
-            <div class="badge">
+            <!-- <div class="badge">
                 <span class="badge-dot"></span>
                 Kecerdasan Buatan
-            </div>
+            </div> -->
             <h1 class="hero-title">
                 <span class="gradient-text">Gradient</span>
                 <span class="gradient-text-alt">Boosting</span>
@@ -65,6 +65,23 @@
             <div class="section-header">
                 <span class="section-tag">01 — Pengenalan</span>
                 <h2 class="section-title">Apa itu Gradient Boosting?</h2>
+                
+                <!-- Penjelasan untuk Awam (Analogi) -->
+                <div class="glass-card layman-explanation" style="margin-top: 2rem; padding: 2rem; text-align: left; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-left: 5px solid var(--accent-1); border-radius: 12px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem; background: rgba(99,102,241,0.2); padding: 8px; border-radius: 50%; display: flex;">💡</span>
+                        <h3 style="margin: 0; color: var(--text-primary); font-size: 1.3rem; font-weight: 600;">Penjelasan Sederhana</h3>
+                    </div>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 12px;">
+                        Bayangkan sebuah <strong>tim kerja</strong> yang sedang memecahkan masalah sulit. Anggota pertama mencoba menyelesaikan, tapi hasilnya masih belum sempurna dan ada bagian yang salah.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 12px;">
+                        Anggota kedua <em>tidak memulai dari nol</em>, ia hanya fokus <strong>memperbaiki kesalahan yang dibuat anggota pertama</strong>. Lalu anggota ketiga masuk khusus untuk <strong>memperbaiki sisa kesalahan anggota kedua</strong>, begitu seterusnya.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin: 0;">
+                        <strong>Intinya:</strong> Gradient Boosting bekerja dengan menyatukan banyak model prediksi sederhana secara berurutan. Setiap model baru yang ditambahkan memiliki satu tugas utama: <strong>memperbaiki error (kesalahan) dari model sebelumnya</strong>. Kerja sama tim inilah yang menghasilkan prediksi yang sangat akurat!
+                    </p>
+                </div>
             </div>
             <div class="overview-grid">
                 <div class="overview-card glass-card">
@@ -135,7 +152,7 @@
                     <div class="step-marker"><span>1</span></div>
                     <div class="step-content glass-card">
                         <h3>Inisialisasi Model Awal</h3>
-                        <p>Model dimulai dengan prediksi konstan, biasanya rata-rata dari target variable. Ini menjadi base prediction <code>F₀(x)</code>.</p>
+                        <p>Model dimulai dengan prediksi konstan, biasanya rata-rata dari target variable. Ini menjadi base prediction <code>F₀(x)</code>. <br><span style="color: #94a3b8; font-style: italic; font-size: 0.95em; display: inline-block; margin-top: 6px;">✨ Sederhananya: Membuat tebakan awal yang paling aman.</span></p>
                         <div class="formula-box">
                             <code>F₀(x) = argmin<sub>γ</sub> Σ L(yᵢ, γ)</code>
                         </div>
@@ -145,7 +162,7 @@
                     <div class="step-marker"><span>2</span></div>
                     <div class="step-content glass-card">
                         <h3>Hitung Pseudo-Residuals</h3>
-                        <p>Hitung gradient negatif dari loss function terhadap prediksi saat ini. Residuals ini menunjukkan arah perbaikan yang diperlukan.</p>
+                        <p>Hitung gradient negatif dari loss function terhadap prediksi saat ini. Residuals ini menunjukkan arah perbaikan yang diperlukan. <br><span style="color: #94a3b8; font-style: italic; font-size: 0.95em; display: inline-block; margin-top: 6px;">✨ Sederhananya: Mencari tahu seberapa meleset tebakan sebelumnya.</span></p>
                         <div class="formula-box">
                             <code>rᵢₘ = -[∂L(yᵢ, F(xᵢ))/∂F(xᵢ)]<sub>F=Fₘ₋₁</sub></code>
                         </div>
@@ -155,7 +172,7 @@
                     <div class="step-marker"><span>3</span></div>
                     <div class="step-content glass-card">
                         <h3>Fit Weak Learner (Tree)</h3>
-                        <p>Latih decision tree baru pada pseudo-residuals. Tree ini belajar memprediksi koreksi yang diperlukan untuk memperbaiki prediksi saat ini.</p>
+                        <p>Latih decision tree baru pada pseudo-residuals. Tree ini belajar memprediksi koreksi yang diperlukan untuk memperbaiki prediksi saat ini. <br><span style="color: #94a3b8; font-style: italic; font-size: 0.95em; display: inline-block; margin-top: 6px;">✨ Sederhananya: Menugaskan anggota baru khusus untuk memperbaiki kesalahan tadi.</span></p>
                         <div class="formula-box">
                             <code>hₘ(x) = DecisionTree(X, rₘ)</code>
                         </div>
@@ -165,7 +182,7 @@
                     <div class="step-marker"><span>4</span></div>
                     <div class="step-content glass-card">
                         <h3>Tentukan Optimal Step Size</h3>
-                        <p>Cari learning rate γ yang optimal untuk setiap region di leaf node, meminimalkan total loss function.</p>
+                        <p>Cari learning rate γ yang optimal untuk setiap region di leaf node, meminimalkan total loss function. <br><span style="color: #94a3b8; font-style: italic; font-size: 0.95em; display: inline-block; margin-top: 6px;">✨ Sederhananya: Menentukan seberapa besar langkah perbaikan yang akan diambil.</span></p>
                         <div class="formula-box">
                             <code>γₘ = argmin<sub>γ</sub> Σ L(yᵢ, Fₘ₋₁(xᵢ) + γ·hₘ(xᵢ))</code>
                         </div>
@@ -175,7 +192,7 @@
                     <div class="step-marker"><span>5</span></div>
                     <div class="step-content glass-card">
                         <h3>Update Model</h3>
-                        <p>Tambahkan weak learner yang telah di-scale dengan learning rate ke model ensemble. Proses ini diulang selama M iterasi.</p>
+                        <p>Tambahkan weak learner yang telah di-scale dengan learning rate ke model ensemble. Proses ini diulang selama M iterasi. <br><span style="color: #94a3b8; font-style: italic; font-size: 0.95em; display: inline-block; margin-top: 6px;">✨ Sederhananya: Menggabungkan hasil perbaikan ke dalam sistem kerja tim.</span></p>
                         <div class="formula-box">
                             <code>Fₘ(x) = Fₘ₋₁(x) + ν · γₘ · hₘ(x)</code>
                         </div>
@@ -185,7 +202,7 @@
                     <div class="step-marker"><span>6</span></div>
                     <div class="step-content glass-card">
                         <h3>Output Prediksi Final</h3>
-                        <p>Model akhir adalah jumlah dari semua weak learners. Prediksi dibuat dengan menjumlahkan kontribusi setiap tree.</p>
+                        <p>Model akhir adalah jumlah dari semua weak learners. Prediksi dibuat dengan menjumlahkan kontribusi setiap tree. <br><span style="color: #94a3b8; font-style: italic; font-size: 0.95em; display: inline-block; margin-top: 6px;">✨ Sederhananya: Hasil akhir super akurat dari kerja sama seluruh anggota tim.</span></p>
                         <div class="formula-box">
                             <code>F(x) = F₀(x) + Σₘ₌₁ᴹ ν · γₘ · hₘ(x)</code>
                         </div>

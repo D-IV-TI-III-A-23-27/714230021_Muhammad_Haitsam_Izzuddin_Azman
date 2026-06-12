@@ -196,21 +196,21 @@ document.querySelectorAll('.stat-number[data-target]').forEach(el => countObs.ob
             ctx.closePath(); ctx.fillStyle = col; ctx.fill();
         }
 
-        [[0,2,'rgba(20,184,166,0.5)'],[1,2,'rgba(139,92,246,0.4)'],[2,3,'rgba(236,72,153,0.4)'],
-         [2,4,'rgba(236,72,153,0.4)'],[2,5,'rgba(236,72,153,0.4)'],[3,6,'rgba(99,102,241,0.4)'],
-         [4,6,'rgba(99,102,241,0.4)'],[5,6,'rgba(99,102,241,0.4)'],[6,8,'rgba(245,158,11,0.5)'],
-         [6,7,'rgba(239,68,68,0.4)'],[7,2,'rgba(239,68,68,0.3)']
+        [[0,2,'rgba(13,148,136,0.6)'],[1,2,'rgba(124,58,237,0.5)'],[2,3,'rgba(219,39,119,0.5)'],
+         [2,4,'rgba(219,39,119,0.5)'],[2,5,'rgba(219,39,119,0.5)'],[3,6,'rgba(79,70,229,0.5)'],
+         [4,6,'rgba(79,70,229,0.5)'],[5,6,'rgba(79,70,229,0.5)'],[6,8,'rgba(217,119,6,0.6)'],
+         [6,7,'rgba(220,38,38,0.5)'],[7,2,'rgba(220,38,38,0.5)']
         ].forEach(([f, t, col]) => arrow(nodes[f].x * W, nodes[f].y * H, nodes[t].x * W, nodes[t].y * H, col));
 
         ctx.setLineDash([4, 6]);
         ctx.beginPath(); ctx.moveTo(nodes[4].x * W, (nodes[4].y + 0.07) * H);
         ctx.lineTo(nodes[5].x * W, (nodes[5].y - 0.07) * H);
-        ctx.strokeStyle = 'rgba(99,102,241,0.3)'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.strokeStyle = 'rgba(79,70,229,0.4)'; ctx.lineWidth = 2; ctx.stroke();
         ctx.setLineDash([]);
 
-        ctx.fillStyle = 'rgba(165,180,252,0.6)'; ctx.font = '20px Inter'; ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(79,70,229,0.8)'; ctx.font = '20px Inter'; ctx.textAlign = 'center';
         ctx.fillText('⋮', nodes[4].x * W, (nodes[4].y + 0.15) * H);
-        ctx.fillStyle = 'rgba(252,165,165,0.6)'; ctx.font = '11px Inter';
+        ctx.fillStyle = 'rgba(220,38,38,0.7)'; ctx.font = '11px Inter';
         ctx.fillText('feedback loop (iterasi)', (nodes[7].x * W + nodes[2].x * W) / 2, nodes[7].y * H + 15);
 
         nodes.forEach((n, i) => {
@@ -321,7 +321,7 @@ document.querySelectorAll('.stat-number[data-target]').forEach(el => countObs.ob
         const sx = (x) => p.l + (x / 10) * pw;
         const sy = (y) => p.t + (1 - (y - yMin) / (yMax - yMin)) * ph;
 
-        predCtx.strokeStyle = 'rgba(255,255,255,0.05)'; predCtx.lineWidth = 1;
+        predCtx.strokeStyle = 'rgba(15,23,42,0.08)'; predCtx.lineWidth = 1;
         for (let i = 0; i <= 5; i++) { const gy = p.t + (i / 5) * ph; predCtx.beginPath(); predCtx.moveTo(p.l, gy); predCtx.lineTo(p.l + pw, gy); predCtx.stroke(); }
 
         data.forEach(d => {
@@ -335,11 +335,11 @@ document.querySelectorAll('.stat-number[data-target]').forEach(el => countObs.ob
         predCtx.strokeStyle = '#f59e0b'; predCtx.lineWidth = 2.5; predCtx.stroke();
 
         predCtx.fillStyle = 'rgba(99,102,241,0.9)'; predCtx.beginPath(); predCtx.arc(p.l + 10, H - 12, 4, 0, 6.2832); predCtx.fill();
-        predCtx.fillStyle = 'rgba(156,163,175,0.8)'; predCtx.font = '11px Inter'; predCtx.textAlign = 'left';
+        predCtx.fillStyle = 'rgba(71,85,105,0.9)'; predCtx.font = '11px Inter'; predCtx.textAlign = 'left';
         predCtx.fillText('Data Asli', p.l + 20, H - 8);
         predCtx.strokeStyle = '#f59e0b'; predCtx.lineWidth = 2.5;
         predCtx.beginPath(); predCtx.moveTo(p.l + 100, H - 12); predCtx.lineTo(p.l + 120, H - 12); predCtx.stroke();
-        predCtx.fillStyle = 'rgba(156,163,175,0.8)'; predCtx.fillText('Prediksi GB', p.l + 126, H - 8);
+        predCtx.fillStyle = 'rgba(71,85,105,0.9)'; predCtx.fillText('Prediksi GB', p.l + 126, H - 8);
     }
 
     function drawLoss(losses) {
@@ -349,11 +349,11 @@ document.querySelectorAll('.stat-number[data-target]').forEach(el => countObs.ob
         const p = { t: 20, r: 20, b: 40, l: 60 }, pw = W - p.l - p.r, ph = H - p.t - p.b;
         const yMax = Math.max(...losses) * 1.1;
 
-        lossCtx.strokeStyle = 'rgba(255,255,255,0.05)';
+        lossCtx.strokeStyle = 'rgba(15,23,42,0.08)';
         for (let i = 0; i <= 5; i++) {
             const gy = p.t + (i / 5) * ph;
             lossCtx.beginPath(); lossCtx.moveTo(p.l, gy); lossCtx.lineTo(p.l + pw, gy); lossCtx.stroke();
-            lossCtx.fillStyle = 'rgba(156,163,175,0.5)'; lossCtx.font = '10px JetBrains Mono'; lossCtx.textAlign = 'right';
+            lossCtx.fillStyle = 'rgba(71,85,105,0.8)'; lossCtx.font = '10px JetBrains Mono'; lossCtx.textAlign = 'right';
             lossCtx.fillText((yMax - (i / 5) * yMax).toFixed(2), p.l - 8, gy + 4);
         }
 
@@ -377,7 +377,7 @@ document.querySelectorAll('.stat-number[data-target]').forEach(el => countObs.ob
             lossCtx.strokeStyle = 'rgba(236,72,153,0.3)'; lossCtx.lineWidth = 6; lossCtx.stroke();
         });
 
-        lossCtx.fillStyle = 'rgba(156,163,175,0.7)'; lossCtx.font = '11px Inter'; lossCtx.textAlign = 'center';
+        lossCtx.fillStyle = 'rgba(71,85,105,0.9)'; lossCtx.font = '11px Inter'; lossCtx.textAlign = 'center';
         lossCtx.fillText('Iterasi', W / 2, H - 5);
     }
 
