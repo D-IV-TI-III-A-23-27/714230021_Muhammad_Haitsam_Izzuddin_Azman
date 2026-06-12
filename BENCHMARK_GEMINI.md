@@ -28,7 +28,7 @@ Jika kita memotong teks (*Value*) **terlalu besar**, makna utamanya menjadi camp
 ## 📊 Parameter Eksperimen
 
 *   **Model Embedding:** `gemini-embedding-001` (Mengubah teks menjadi Key/Vektor).
-*   **Dataset:** Jurnal Ilmiah prediksi waktu tempuh jalan tol berjudul *"A gradient boosting method to improve travel time prediction"* (arsip jurnal tersedia di folder `papers/`). **DOI:** [10.1016/j.trc.2015.02.019](https://doi.org/10.1016/j.trc.2015.02.019)
+*   **Dataset:** Jurnal Ilmiah prediksi waktu tempuh jalan tol berjudul *"A gradient boosting method to improve travel time prediction"*. **DOI:** [10.1016/j.trc.2015.02.019](https://doi.org/10.1016/j.trc.2015.02.019)
 *   **Top-K Retrieval:** Mengambil 5 "Value" teratas yang paling mirip dengan "Query".
 *   **Ujian (Test Queries):** 5 pertanyaan yang mencakup fakta, penalaran (logika), hingga pertanyaan lintas bahasa.
 
